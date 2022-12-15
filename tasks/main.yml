@@ -1,0 +1,28 @@
+---
+# tasks file for coffeesprout.dante-proxy
+
+- name: install dante-proxy
+  package:
+    name: "{{ dante_packages }}"
+    state: present
+
+- name: configure dante-proxy
+  template:
+    src: "{{ dante_configuration_template | default('danted.conf.j2') }}"
+    dest: "{{ dante_configuration_file }}"
+
+- name: create proxy users
+  user:
+    name: "{{ item.name }}"
+    password: "{{ item.password | password_hash('sha512', 'havesomesalt') }}"
+    create_home: False
+    shell: /usr/bin/false
+    system: True
+    state: present
+  with_items: "{{ dante_proxy_users }}"
+
+- name: enable and start dante
+  service:
+    name: "{{ dante_service }}"
+    enabled: True
+    state: started

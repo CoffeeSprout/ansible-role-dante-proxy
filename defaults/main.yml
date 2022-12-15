@@ -1,0 +1,23 @@
+---
+# defaults file for coffeesprout.dante-proxy
+
+dante_packages:
+- dante-server
+
+dante_configuration_folder: "/etc/"
+dante_configuration_file: "{{ dante_configuration_folder }}/danted.conf"
+
+dante_proxy_internal: 0.0.0.0
+dante_proxy_port: 1080
+dante_proxy_external: eth0
+
+dante_pass_from: 0.0.0.0/0
+dante_pass_to: 0.0.0.0/0
+
+dante_service: danted
+
+dante_proxy_users: []
+
+dante_socksmethod: none
+#- name: dante
+#  password: password

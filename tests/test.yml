@@ -1,0 +1,8 @@
+---
+- hosts: lab
+  become: True
+  roles:
+  - role: coffeesprout.dante-proxy
+    dante_proxy_users:
+    - name: dante
+      password: inferno
