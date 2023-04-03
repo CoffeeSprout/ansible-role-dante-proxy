@@ -10,7 +10,9 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-Setup Dante to pass traffic from any to any if you login as dante / inferno. Note: not all browsers support this *glares at Chrome*
+
+This sets up Dante to pass traffic from any to any if you log in as `dante` with the password `inferno`. Note that not all browsers support this.
+
 
       - hosts: servers
         roles:
@@ -20,7 +22,7 @@ Setup Dante to pass traffic from any to any if you login as dante / inferno. Not
           - name: dante
             password: inferno
 
-Setup Dante to pass traffic from internal network without a login:
+Alternatively, you can set up Dante to pass traffic from internal network without a login:
 
       - hosts: servers
         roles:
